@@ -18,7 +18,7 @@ namespace MarsProjectMVP.Pages
         {
 
             //Login Functionality
-            driver = new ChromeDriver();
+            
             driver.Manage().Window.Maximize();
 
             driver.Navigate().GoToUrl("http://localhost:5000/");
@@ -35,7 +35,7 @@ namespace MarsProjectMVP.Pages
 
             IWebElement loginbutton = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[4]/button"));
             loginbutton.Click();
-            Thread.Sleep(4000);
+            
 
         }
     }

@@ -15,9 +15,15 @@ namespace MarsProjectMVP.Pages
         public void AddingNewSkills(IWebDriver driver)
         {
             //-----ADD Skill ----------
+            Thread.Sleep(4000);
+            //IWebElement HiMeet = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/div[1]/div[2]/div/span"));
+            //HiMeet.Click();
 
-            driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[2]"))
-                .Click();
+            //IWebElement Profile = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/div[1]/div[2]/div/span/div/a[1]"));
+            //Profile.Click();
+
+
+            driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[2]")).Click();
                 
             IWebElement AddnewSkills = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/thead/tr/th[3]/div"));
             AddnewSkills.Click();
