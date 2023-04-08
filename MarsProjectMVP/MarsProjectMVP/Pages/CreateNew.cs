@@ -24,7 +24,7 @@ namespace MarsProjectMVP.Pages
 
 
             driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[2]")).Click();
-                
+
             IWebElement AddnewSkills = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/thead/tr/th[3]/div"));
             AddnewSkills.Click();
             Thread.Sleep(3000);
@@ -51,5 +51,31 @@ namespace MarsProjectMVP.Pages
         }
 
 
+        public void EditSkills(IWebDriver driver)
+        {
+            Thread.Sleep(2000);
+            driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[2]")).Click();
+            Thread.Sleep(1000);
+            IWebElement editButtonn = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td[3]/span[1]/i"));
+            editButtonn.Click();
+            Thread.Sleep(1000);
+
+            IWebElement textChange = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td/div/div[1]/input"));
+            textChange.Click();
+            textChange.Clear();
+            textChange.SendKeys("Java");
+
+            Thread.Sleep(1000);
+            IWebElement update = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td/div/span/input[1]"));
+            update.Click();
+            Thread.Sleep(2000);
+
+        }
+
+        public string EditedSkills(IWebDriver driver)
+        {
+            IWebElement SkillsEditedText = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td[1]"));
+            return SkillsEditedText.Text;
+        }
     }
 }

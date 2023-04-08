@@ -40,5 +40,22 @@ namespace MarsProjectMVP.StepDefinitions
 
 
         }
+
+        [When(@"I edit the existing skills")]
+        public void WhenIEditTheExistingSkills()
+        {
+            createNewObj.EditSkills(driver);
+
+
+        }
+
+        [Then(@"The record should have edited successfully")]
+        public void ThenTheRecordShouldHaveEditedSuccessfully()
+        {
+            string newEditedSkills = createNewObj.EditedSkills(driver);
+
+            Assert.That(newEditedSkills == "Java", "Actual Skills and selected Skills do not match.");
+        }
+
     }
 }
