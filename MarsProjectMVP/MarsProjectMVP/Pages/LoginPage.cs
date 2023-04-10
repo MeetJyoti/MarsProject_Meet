@@ -24,6 +24,7 @@ namespace MarsProjectMVP.Pages
             driver.Navigate().GoToUrl("http://localhost:5000/");
             Thread.Sleep(1000);
 
+            Wait.WaitToBeClicakble(driver, "XPath", "//*[@id=\"home\"]/div/div/div[1]/div/a", 5);
             IWebElement signin = driver.FindElement(By.XPath("//*[@id=\"home\"]/div/div/div[1]/div/a"));
             signin.Click();
 
