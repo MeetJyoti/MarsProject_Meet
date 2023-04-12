@@ -11,7 +11,7 @@ namespace MarsProjectMVP.StepDefinitions
 
 
     [Binding]
-    public class AddNewStepDefinitions: CommonDriver
+    public class AddNewStepDefinitions : CommonDriver
     {
         LoginPage LoginPageObj = new LoginPage();
         CreateNew createNewObj = new CreateNew();
@@ -29,7 +29,7 @@ namespace MarsProjectMVP.StepDefinitions
         {
             CreateNew createNewObj = new CreateNew();
             createNewObj.AddingNewSkills(driver);
-        } 
+        }
 
         [Then(@"The record should be added successfully")]
         public void ThenTheRecordShouldBeAddedSuccessfully()
@@ -55,6 +55,24 @@ namespace MarsProjectMVP.StepDefinitions
             string newEditedSkills = createNewObj.EditedSkills(driver);
 
             Assert.That(newEditedSkills == "Java", "Actual Skills and selected Skills do not match.");
+        }
+
+        [When(@"I delete the existing skill")]
+        public void WhenIDeleteTheExistingSkill()
+        {
+            createNewObj.DeleteSkills(driver);
+        }
+
+        [Then(@"The record should have deleted successfully")]
+        public void ThenTheRecordShouldHaveDeletedSuccessfully()
+        {
+            string deleteSkill = createNewObj.WindowPop(driver);
+            Assert.That(deleteSkill == "Java has been deleted", "Failed to deleted the skill");
+        }
+        [AfterScenario]
+        public void tearDown()
+        {
+            driver.Quit();
         }
 
     }
