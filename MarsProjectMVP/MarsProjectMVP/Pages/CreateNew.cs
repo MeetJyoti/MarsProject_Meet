@@ -47,6 +47,42 @@ namespace MarsProjectMVP.Pages
             return actualSkills.Text;
         }
 
+        public void AddingExistingSkills(IWebDriver driver)
+
+        {
+
+            Thread.Sleep(2000);
+            Wait.WaitToBeClicakble(driver, "XPath", "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[2]", 5);
+            driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[2]")).Click();
+
+            IWebElement AddnewSkills = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/thead/tr/th[3]/div"));
+            AddnewSkills.Click();
+
+            Wait.WaitToBeClicakble(driver, "XPath", "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/div/div[1]/input", 5);
+            IWebElement TypeSkills = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/div/div[1]/input"));
+            TypeSkills.SendKeys("Python");
+
+            IWebElement dropdown = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/div/div[2]/select"));
+            dropdown.Click();
+
+            Wait.WaitToBeClicakble(driver, "XPath", "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/div/div[2]/select/option[2]", 5);
+            IWebElement chooseBeginner = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/div/div[2]/select/option[2]"));
+            chooseBeginner.Click();
+
+            IWebElement AddButton = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/div/span/input[1]"));
+            AddButton.Click();
+
+            Thread.Sleep(2000);
+
+        }
+
+        public string WindowPopDuplicateSkill(IWebDriver driver)
+        {
+            IWebElement DuplicateAlert = driver.FindElement(By.CssSelector("body > div.ns-box.ns-growl.ns-effect-jelly.ns-type-error.ns-show > div"));
+            return DuplicateAlert.Text;
+
+        }
+
 
         public void EditSkills(IWebDriver driver)
         {

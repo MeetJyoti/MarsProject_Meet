@@ -42,6 +42,23 @@ namespace MarsProjectMVP.StepDefinitions
 
         }
 
+        [When(@"I add Existing Skills")]
+        public void WhenIAddExistingSkills()
+        {
+            CreateNew createNewObj = new CreateNew();
+            createNewObj.AddingExistingSkills(driver);
+        }
+
+        [Then(@"The record should not be added successfully, should throw notofication")]
+        public void ThenTheRecordShouldNotBeAddedSuccessfullyShouldThrowNotofication()
+        {
+            
+                string DuplicateSkill = createNewObj.WindowPopDuplicateSkill(driver);
+                Assert.That(DuplicateSkill == "This skill is already exist in your skill list.", "Skills Added");
+            
+        }
+
+
         [When(@"I edit the existing skills")]
         public void WhenIEditTheExistingSkills()
         {
