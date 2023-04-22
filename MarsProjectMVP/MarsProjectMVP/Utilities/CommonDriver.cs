@@ -14,12 +14,8 @@ namespace MarsProjectMVP.Utilities
     public class CommonDriver
     {
         public static IWebDriver driver;
+    
 
-       
-        public void ClosingSteps()
-        {
-            driver.Quit();
-        }
     }
 
 }

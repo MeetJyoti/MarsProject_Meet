@@ -15,12 +15,13 @@ namespace MarsProjectMVP.StepDefinitions
     {
         LoginPage LoginPageObj = new LoginPage();
         CreateNew createNewObj = new CreateNew();
+        
 
 
         [Given(@"I logged into Mars application")]
         public void GivenILoggedIntoMarsApplication()
         {
-            driver = new ChromeDriver();
+            
             LoginPageObj.LoginActions(driver);
         }
 
@@ -69,11 +70,7 @@ namespace MarsProjectMVP.StepDefinitions
             string deleteSkill = createNewObj.WindowPop(driver);
             Assert.That(deleteSkill == "Java has been deleted", "Failed to deleted the skill");
         }
-        [AfterScenario]
-        public void tearDown()
-        {
-            driver.Quit();
-        }
+        
 
     }
 }

@@ -1,7 +1,4 @@
-﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-
-using MarsProjectMVP.Utilities;
+﻿using MarsProjectMVP.Utilities;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
@@ -16,9 +13,9 @@ namespace MarsProjectMVP.Pages
     {
         public void LoginActions(IWebDriver driver)
         {
-
+           
             //Login Functionality
-            
+
             driver.Manage().Window.Maximize();
 
             driver.Navigate().GoToUrl("http://localhost:5000/");
