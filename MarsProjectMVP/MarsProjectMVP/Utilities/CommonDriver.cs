@@ -20,15 +20,3 @@ namespace MarsProjectMVP.Utilities
 
 }
 
-//[OneTimeSetUp]
-//public void LoginSteps()
-//{
-//    driver = new ChromeDriver();
-
-//    // Login page object initialization and definition
-//    LoginPage loginPageObj = new LoginPage();
-//    loginPageObj.LoginActions(driver);
-//}
-
-
-//[OneTimeTearDown]

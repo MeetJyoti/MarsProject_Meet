@@ -18,12 +18,7 @@ namespace MarsProjectMVP.Utilities
             driver = new ChromeDriver();
             LoginPage LoginPageObj = new LoginPage();
             LoginPageObj.LoginActions(driver);
-            CreateNew createNewObj = new CreateNew();
-            Education educationObj = new Education();
-            Language languageObj = new Language();
-
-
-
+   
         }
 
         [AfterScenario]
