@@ -80,8 +80,8 @@ namespace MarsProjectMVP.Pages
         
             public string WindowPopExistingLanguage(IWebDriver driver)
             {
-            Thread.Sleep(2000);
-            IWebElement DuplicateAlert = driver.FindElement(By.CssSelector("body > div.ns-box.ns-growl.ns-effect-jelly.ns-type-error.ns-show"));                                                                      
+                Thread.Sleep(2000);
+                IWebElement DuplicateAlert = driver.FindElement(By.CssSelector("body > div.ns-box.ns-growl.ns-effect-jelly.ns-type-error.ns-show > div"));                                                                      
                 return DuplicateAlert.Text;
 
 

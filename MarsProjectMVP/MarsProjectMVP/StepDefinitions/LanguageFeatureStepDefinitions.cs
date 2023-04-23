@@ -9,20 +9,20 @@ namespace MarsProjectMVP.StepDefinitions
     [Binding]
     public class LanguageFeatureStepDefinitions : CommonDriver
     {
-        LoginPage LoginPageObj = new LoginPage();
+        
         Language languageObj = new Language();
 
         [Given(@"I Logged Into Mars Portal Successfully")]
         public void GivenILoggedIntoMarsPortalSuccessfully()
         {
-            LoginPageObj.LoginActions(driver);
+            
         }
 
        
         [When(@"Adding Language on my profile")]
         public void GivenAddingLanguageOnMyProfile()
         {
-            LoginPageObj.LoginActions(driver);
+            
             languageObj.AddingNewLanguage(driver);
 
         }
@@ -37,15 +37,15 @@ namespace MarsProjectMVP.StepDefinitions
         [When(@"Pre Existing record is entered")]
         public void WhenPreExistingRecordIsEntered()
         {
-            LoginPageObj.LoginActions(driver);
+            
             languageObj.AddingPreExistingLanguage(driver);
         }
 
-        [Then(@"Should result in a notification ""([^""]*)""")]
-        public void ThenShouldResultInANotification(string p0)
+        [Then(@"Should result in a notification")]
+        public void ThenShouldResultInANotification()
         {
-            string DuplicateLanguage= languageObj.WindowPopExistingLanguage(driver);
-            Assert.That(DuplicateLanguage == "Duplicated data", "English has been added to your languages");
+            string DuplicateLanguage = languageObj.WindowPopExistingLanguage(driver);
+            Assert.That(DuplicateLanguage == "This language is already exist in your language list.", "English has been added to your languages");
         }
 
 

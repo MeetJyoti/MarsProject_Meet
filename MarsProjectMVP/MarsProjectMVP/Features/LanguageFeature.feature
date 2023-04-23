@@ -12,5 +12,5 @@ Scenario: 01) Adding Language
 Scenario: 02) -  Adding Invalid input for Language Record
 	Given I Logged Into Mars Portal Successfully
 	When Pre Existing record is entered
-	Then Should result in a notification "Duplicated data"
+	Then Should result in a notification
 	 

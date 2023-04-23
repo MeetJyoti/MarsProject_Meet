@@ -10,13 +10,13 @@ namespace MarsProjectMVP.StepDefinitions
         
     public class EducationFeatureStepDefinitions: CommonDriver
     {
-        LoginPage LoginPageObj = new LoginPage();
+        
         Education educationObj = new Education();
 
         [Given(@"I Logged Into Mars Portal")]
         public void GivenILoggedIntoMarsPortal()
         {
-            LoginPageObj.LoginActions(driver);
+           
         }
 
         [When(@"I add new Education and Details")]
@@ -62,25 +62,27 @@ namespace MarsProjectMVP.StepDefinitions
         [When(@"I Edit the existing Education")]
         public void WhenIEditTheExistingEducation()
         {
-            throw new PendingStepException();
+            educationObj.EditingEducation(driver);
         }
 
         [Then(@"The record should have Edited successfully")]
         public void ThenTheRecordShouldHaveEditedSuccessfully()
         {
-            throw new PendingStepException();
+            string EditingEducation = educationObj.WindowPopEducationEdit(driver);
+            Assert.That(EditingEducation == "Education as been updated", "Education not Edited - Error");
         }
 
         [When(@"I Delete the existing Education")]
         public void WhenIDeleteTheExistingEducation()
         {
-            throw new PendingStepException();
+            educationObj.DeletingEducation(driver);
         }
 
         [Then(@"The record should have Deleted successfully")]
         public void ThenTheRecordShouldHaveDeletedSuccessfully()
         {
-            throw new PendingStepException();
+            string DeletingEducation = educationObj.WindowPopEducationDelete(driver);
+            Assert.That(DeletingEducation == "Education entry successfully removed", "Education entry not removed - Error");
         }
     }
 }

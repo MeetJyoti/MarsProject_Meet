@@ -190,13 +190,71 @@ namespace MarsProjectMVP.Pages
         }
 
         public string WindowPopEducationAlreadyExist(IWebDriver driver)
-        { 
+        {
             Wait.WaitToBeClicakble(driver, "CssSelector", "body > div.ns-box.ns-growl.ns-effect-jelly.ns-type-error.ns-show > div", 5);
 
             IWebElement AddAlert = driver.FindElement(By.CssSelector("body > div.ns-box.ns-growl.ns-effect-jelly.ns-type-error.ns-show > div"));
             return AddAlert.Text;
 
         }
+        public void EditingEducation(IWebDriver driver)
+        {
+            Thread.Sleep(2000);
+            Wait.WaitToBeClicakble(driver, "XPath", "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[3]", 5);
+            driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[3]")).Click();
 
+            Wait.WaitToBeClicakble(driver, "XPath", "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody[1]/tr/td[6]/span[1]/i", 5);
+            IWebElement EditButton = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody[1]/tr/td[6]/span[1]/i"));
+            EditButton.Click();
+
+            Wait.WaitToBeClicakble(driver, "XPath", "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody[1]/tr/td/div[1]/div[1]/input", 5);
+
+            IWebElement CollegeEdit = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody[1]/tr/td/div[1]/div[1]/input"));
+            CollegeEdit.Click();
+            CollegeEdit.Clear();
+            CollegeEdit.SendKeys("Canterbury");
+
+
+            IWebElement EditCourse = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody[1]/tr/td/div[2]/div[2]/input"));
+            EditCourse.Click();
+            EditCourse.Clear();
+            EditCourse.SendKeys("Marketing");
+
+            IWebElement Update = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody[1]/tr/td/div[3]/input[1]"));
+            Update.Click();
+            Thread.Sleep(2000);
+
+        }
+        public string WindowPopEducationEdit(IWebDriver driver)
+        {
+            Wait.WaitToBeClicakble(driver, "CssSelector", "body > div.ns-box.ns-growl.ns-effect-jelly.ns-type-success.ns-show > div", 5);
+
+            IWebElement EditAlert = driver.FindElement(By.CssSelector("body > div.ns-box.ns-growl.ns-effect-jelly.ns-type-success.ns-show > div"));
+            return EditAlert.Text;
+
+        }
+
+        public void DeletingEducation(IWebDriver driver)
+        {
+            Thread.Sleep(2000);
+            Wait.WaitToBeClicakble(driver, "XPath", "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[3]", 5);
+            driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[3]")).Click();
+
+            Wait.WaitToBeClicakble(driver, "XPath", "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody[1]/tr/td[6]/span[2]/i", 5);
+            IWebElement Delete = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody[1]/tr/td[6]/span[2]/i"));
+            Delete.Click();
+
+            Thread.Sleep(2000);
+
+        }
+
+        public string WindowPopEducationDelete(IWebDriver driver)
+        {
+            Wait.WaitToBeClicakble(driver, "CssSelector", "body > div.ns-box.ns-growl.ns-effect-jelly.ns-type-success.ns-show", 5);
+
+            IWebElement DeleteAlert = driver.FindElement(By.CssSelector("body > div.ns-box.ns-growl.ns-effect-jelly.ns-type-success.ns-show"));
+            return DeleteAlert.Text;
+
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace MarsProjectMVP.StepDefinitions
     [Binding]
     public class AddNewStepDefinitions : CommonDriver
     {
-        LoginPage LoginPageObj = new LoginPage();
+        
         CreateNew createNewObj = new CreateNew();
         
 
@@ -22,13 +22,13 @@ namespace MarsProjectMVP.StepDefinitions
         public void GivenILoggedIntoMarsApplication()
         {
             
-            LoginPageObj.LoginActions(driver);
+            
         }
 
         [When(@"I add new Skills and Level")]
         public void WhenIAddNewSkillsAndLevel()
         {
-            CreateNew createNewObj = new CreateNew();
+            
             createNewObj.AddingNewSkills(driver);
         }
 
