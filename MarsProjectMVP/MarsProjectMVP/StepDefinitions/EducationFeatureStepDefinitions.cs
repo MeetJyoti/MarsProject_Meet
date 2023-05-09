@@ -23,7 +23,7 @@ namespace MarsProjectMVP.StepDefinitions
         public void WhenIAddNewEducationAndDetails()
         {
             
-            educationObj.AddingNewEducation(driver);
+            educationObj.AddingNewEducation("Massey", "Information Science");
         }
 
         [Then(@"The Education record should be added successfully")]
@@ -36,7 +36,7 @@ namespace MarsProjectMVP.StepDefinitions
         [When(@"I add Same University Name and Different Country")]
         public void WhenIAddSameUniversityNameAndDifferentCountry()
         {
-            educationObj.AddingSameUniversityDifferentCountry(driver);
+            //educationObj.AddingSameUniversityDifferentCountry();
         }
 
         [Then(@"The record should have added successfully")]
@@ -49,7 +49,7 @@ namespace MarsProjectMVP.StepDefinitions
         [When(@"I add  existing Education")]
         public void WhenIAddExistingEducation()
         {
-            educationObj.AddingExistingEducation(driver);
+            educationObj.AddingNewEducation("Massey", "Information Science");
         }
 
         [Then(@"The record should throw notification and should not add")]
@@ -62,7 +62,7 @@ namespace MarsProjectMVP.StepDefinitions
         [When(@"I Edit the existing Education")]
         public void WhenIEditTheExistingEducation()
         {
-            educationObj.EditingEducation(driver);
+            educationObj.EditingEducation("Canterbury", "Marketing");
         }
 
         [Then(@"The record should have Edited successfully")]

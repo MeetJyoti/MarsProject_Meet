@@ -52,6 +52,7 @@ namespace MarsProjectMVP.Pages
         //Confirming that the record is created - Skills - Python(Beginner)
         public string GetSkills(IWebDriver driver)
         {
+            Thread.Sleep(1000);
             IWebElement actualSkills = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td[1]"));
             return actualSkills.Text;
         }
@@ -60,13 +61,13 @@ namespace MarsProjectMVP.Pages
 
         public string WindowPopDuplicateSkill(IWebDriver driver)
         {
-            IWebElement DuplicateAlert = driver.FindElement(By.CssSelector("body > div.ns-box.ns-growl.ns-effect-jelly.ns-type-error.ns-show > div"));
+            Thread.Sleep(1000);
+            IWebElement DuplicateAlert = driver.FindElement(By.CssSelector("body > div.ns-box.ns-growl.ns-effect-jelly.ns-type-error.ns-hide > div"));
             return DuplicateAlert.Text;
 
         }
 
-
-        public void EditSkills(IWebDriver driver)
+        public void EditSkills(string skills)
         {
             Thread.Sleep(2000);
             Wait.WaitToBeClicakble(driver, "XPath", "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[2]", 5);
@@ -80,7 +81,7 @@ namespace MarsProjectMVP.Pages
             IWebElement textChange = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td/div/div[1]/input"));
             textChange.Click();
             textChange.Clear();
-            textChange.SendKeys("Java");
+            textChange.SendKeys(skills);
 
             Wait.WaitToBeClicakble(driver, "XPath", "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td/div/span/input[1]", 5);
             IWebElement update = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td/div/span/input[1]"));
@@ -89,6 +90,7 @@ namespace MarsProjectMVP.Pages
 
         }
 
+
         public string EditedSkills(IWebDriver driver)
         {
             IWebElement SkillsEditedText = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td[1]"));
@@ -96,7 +98,7 @@ namespace MarsProjectMVP.Pages
         }
 
 
-        public void DeleteSkills(IWebDriver driver)
+        public void DeleteSkills()
         {
             Wait.WaitToBeClicakble(driver, "XPath", "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[2]", 5);
             Thread.Sleep(1000);
