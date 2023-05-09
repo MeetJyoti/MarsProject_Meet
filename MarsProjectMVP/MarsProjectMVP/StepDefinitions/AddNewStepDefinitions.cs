@@ -29,7 +29,7 @@ namespace MarsProjectMVP.StepDefinitions
         public void WhenIAddNewSkillsAndLevel()
         {
             
-            createNewObj.AddingNewSkills(driver);
+            createNewObj.AddingNewSkills("Python");
         }
 
         [Then(@"The record should be added successfully")]
@@ -46,7 +46,7 @@ namespace MarsProjectMVP.StepDefinitions
         public void WhenIAddExistingSkills()
         {
             CreateNew createNewObj = new CreateNew();
-            createNewObj.AddingExistingSkills(driver);
+            createNewObj.AddingNewSkills("Python");
         }
 
         [Then(@"The record should not be added successfully, should throw notofication")]

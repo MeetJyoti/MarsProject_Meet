@@ -11,33 +11,32 @@ namespace MarsProjectMVP.Pages
 {
     public class LoginPage : CommonDriver
     {
-        public void LoginActions(IWebDriver driver)
+
+
+        //Login Functionality
+
+        public readonly By _signInButton = By.CssSelector("[class=\"item\"]");
+        public readonly By _emailInput = By.Name("email");
+        public readonly By _passwordInput = By.Name("password");
+        public readonly By _rememberMeCheckbox = By.Name("rememberDetails");
+        public readonly By _loginButton = By.XPath("//*[contains(text(),'Login')]");
+
+        public void Login(string email, string password)
         {
-           
-            //Login Functionality
-
             driver.Manage().Window.Maximize();
+            driver.Navigate().GoToUrl("http://localhost:5000/Home");
 
-            driver.Navigate().GoToUrl("http://localhost:5000/");
-            Thread.Sleep(1000);
-
-            Wait.WaitToBeClicakble(driver, "XPath", "//*[@id=\"home\"]/div/div/div[1]/div/a", 5);
-            IWebElement signin = driver.FindElement(By.XPath("//*[@id=\"home\"]/div/div/div[1]/div/a"));
-            signin.Click();
-
-            IWebElement emailID = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[1]/input"));
-            emailID.SendKeys("shahmeetnz@gmail.com");
-
-            IWebElement password = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[2]/input"));
-            password.SendKeys("123456");
-
-            IWebElement loginbutton = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[4]/button"));
-            loginbutton.Click();
-            
-
+            driver.FindElement(_signInButton).Click();
+            driver.FindElement(_emailInput).SendKeys(email);
+            driver.FindElement(_passwordInput).SendKeys(password);
+            driver.FindElement(_rememberMeCheckbox).Click();
+            driver.FindElement(_loginButton).Click();
         }
     }
-}
-            
 
-            
+
+
+}
+
+
+

@@ -17,8 +17,9 @@ namespace MarsProjectMVP.Utilities
         {
             driver = new ChromeDriver();
             LoginPage LoginPageObj = new LoginPage();
-            LoginPageObj.LoginActions(driver);
-   
+           // LoginPageObj.LoginActions(driver);
+           LoginPageObj.Login("shahmeetnz@gmail.com", "123456");
+
         }
 
         [AfterScenario]

@@ -1,6 +1,7 @@
 using MarsProjectMVP.Pages;
 using MarsProjectMVP.Utilities;
 using NUnit.Framework;
+using OpenQA.Selenium;
 using System;
 using TechTalk.SpecFlow;
 
@@ -23,7 +24,7 @@ namespace MarsProjectMVP.StepDefinitions
         public void GivenAddingLanguageOnMyProfile()
         {
             
-            languageObj.AddingNewLanguage(driver);
+            languageObj.AddNewLanguage("English");
 
         }
 
@@ -38,7 +39,7 @@ namespace MarsProjectMVP.StepDefinitions
         public void WhenPreExistingRecordIsEntered()
         {
             
-            languageObj.AddingPreExistingLanguage(driver);
+            languageObj.AddNewLanguage("English");
         }
 
         [Then(@"Should result in a notification")]
