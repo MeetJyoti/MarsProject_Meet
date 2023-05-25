@@ -4,10 +4,16 @@ I would like to add, edit the Education in the Mars application
 So that other people can see my profile details
 
 @tag1
-Scenario: 01) Add new Education 
+Scenario Outline: 01) Add new Education 
 	Given I Logged Into Mars Portal 
-	When I add new Education and Details
+	When I add new Education Details, '<Collegename>', '<CountryName>', '<Title>', '<Degree>', '<Year>'
 	Then The Education record should be added successfully
+
+	Examples: 
+	| Collegename | CountryName | Title		| Degree              | Year |
+	| Massey      | Philippines | B.Sc		| Information Science |    2010 |
+	| Otago       | Canada		| BFA		| Civil               |      2018|
+	| AUT         | Oman        | PHD     | Mechanical          |     2019 |
 
 Scenario: 02) Checking Same University name for Different Country
 	Given I Logged Into Mars Portal 

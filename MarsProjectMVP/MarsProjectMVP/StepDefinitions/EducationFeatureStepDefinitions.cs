@@ -19,12 +19,13 @@ namespace MarsProjectMVP.StepDefinitions
            
         }
 
-        [When(@"I add new Education and Details")]
-        public void WhenIAddNewEducationAndDetails()
+        
+        [When(@"I add new Education Details, '([^']*)', '([^']*)', '([^']*)', '([^']*)', '([^']*)'")]
+        public void WhenIAddNewEducationDetails(string Collegename, string countryName, string Title, string degree, string year)
         {
-            
-            educationObj.AddingNewEducation("Massey", "Information Science");
+            educationObj.AddingNewEducation(driver, Collegename, countryName, Title, degree, year);
         }
+
 
         [Then(@"The Education record should be added successfully")]
         public void ThenTheEducationRecordShouldBeAddedSuccessfully()

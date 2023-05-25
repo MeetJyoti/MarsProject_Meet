@@ -20,7 +20,7 @@ namespace MarsProjectMVP.Utilities
            // LoginPageObj.LoginActions(driver);
            LoginPageObj.Login("shahmeetnz@gmail.com", "123456");
 
-        }
+        }  
 
         [AfterScenario]
         public void AfterScenario()

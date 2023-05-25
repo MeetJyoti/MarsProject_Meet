@@ -77,11 +77,24 @@ namespace MarsProjectMVP.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("01) Add new Education")]
         [NUnit.Framework.CategoryAttribute("tag1")]
-        public void _01AddNewEducation()
+        [NUnit.Framework.TestCaseAttribute("Massey", "Philippines", "B.Sc", "Information Science", "2010", null)]
+        [NUnit.Framework.TestCaseAttribute("Otago", "Canada", "BFA", "Civil", "2018", null)]
+        [NUnit.Framework.TestCaseAttribute("AUT", "Oman", "PHD", "Mechanical", "2019", null)]
+        public void _01AddNewEducation(string collegename, string countryName, string title, string degree, string year, string[] exampleTags)
         {
-            string[] tagsOfScenario = new string[] {
+            string[] @__tags = new string[] {
                     "tag1"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Collegename", collegename);
+            argumentsOfScenario.Add("CountryName", countryName);
+            argumentsOfScenario.Add("Title", title);
+            argumentsOfScenario.Add("Degree", degree);
+            argumentsOfScenario.Add("Year", year);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("01) Add new Education", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 7
 this.ScenarioInitialize(scenarioInfo);
@@ -97,7 +110,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("I Logged Into Mars Portal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 9
- testRunner.When("I add new Education and Details", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("I add new Education Details, \'{0}\', \'{1}\', \'{2}\', \'{3}\', \'{4}\'", collegename, countryName, title, degree, year), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 10
  testRunner.Then("The Education record should be added successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -113,7 +126,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("02) Checking Same University name for Different Country", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 12
+#line 18
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -123,13 +136,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 13
+#line 19
  testRunner.Given("I Logged Into Mars Portal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 14
+#line 20
  testRunner.When("I add Same University Name and Different Country", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 15
+#line 21
  testRunner.Then("The record should have added successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -143,7 +156,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("03) Adding Existing Education Details", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 17
+#line 23
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -153,13 +166,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 18
+#line 24
  testRunner.Given("I Logged Into Mars Portal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 19
+#line 25
  testRunner.When("I add  existing Education", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 20
+#line 26
  testRunner.Then("The record should throw notification and should not add", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -173,7 +186,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("04) Edit the Education record", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 22
+#line 28
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -183,13 +196,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 23
+#line 29
  testRunner.Given("I Logged Into Mars Portal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 24
+#line 30
  testRunner.When("I Edit the existing Education", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 25
+#line 31
  testRunner.Then("The record should have Edited successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -203,7 +216,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("05) Delete the Education record", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 27
+#line 33
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -213,13 +226,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 28
+#line 34
  testRunner.Given("I Logged Into Mars Portal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 29
+#line 35
  testRunner.When("I Delete the existing Education", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 30
+#line 36
  testRunner.Then("The record should have Deleted successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
