@@ -17,8 +17,8 @@ namespace MarsProjectMVP.Pages
         private IWebElement _collegeNameInput => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/div/div[1]/div[1]/input"));
         private IWebElement _countryDropdown => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/div/div[1]/div[2]/select"));
         private IWebElement _nzCountryOption => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/div/div[1]/div[2]/select/option[102]"));
-        //private IWebElement _titleDropdown => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/div/div[2]/div[1]/select"));
-        //private IWebElement _btechOption => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/div/div[2]/div[1]/select/option[7]"));
+        private IWebElement _titleDropdown => driver.FindElement(By.Name("title"));
+        private IWebElement _btechOption => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/div/div[2]/div[1]/select/option[7]"));
         private IWebElement _degreeInput => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/div/div[2]/div[2]/input"));
         private IWebElement _yearOfGraduationDropdown => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/div/div[2]/div[3]/select"));
         private IWebElement _selectYearOption => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/div/div[2]/div[3]/select/option[4]"));
@@ -26,7 +26,7 @@ namespace MarsProjectMVP.Pages
 
 
 
-        public void AddingNewEducation(IWebDriver driver, string Collegename, string CountryName, string Degree, string Title, string Year )
+        public void AddingNewEducation(IWebDriver driver, string Collegename, string CountryName, string Degree, string Year )
         {
             Thread.Sleep(2000);
             Wait.WaitToBeClicakble(driver, "XPath", "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[3]", 5);
@@ -48,15 +48,12 @@ namespace MarsProjectMVP.Pages
             SelectElement instituteCountry = new SelectElement(_countryDropdown);
             instituteCountry.SelectByValue(CountryName);
 
-            //Wait.WaitToBeClicakble(driver, "XPath", "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/div/div[2]/div[1]/select", 5);
-            //_titleDropdown.Click();
+            Wait.WaitToBeClicakble(driver, "Name", "title", 5);
+            _titleDropdown.Click();
 
             Thread.Sleep(1000);
-            IWebElement titleDropdown = driver.FindElement(By.Name("title"));
-            titleDropdown.Click();
-            Thread.Sleep(1000);
-            SelectElement title = new SelectElement(titleDropdown);
-            title.SelectByValue(Title);
+            
+            _btechOption.Click();
 
             Wait.WaitToBeClicakble(driver, "XPath", "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/div/div[2]/div[2]/input", 5);
             _degreeInput.SendKeys(Degree);

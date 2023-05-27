@@ -8,22 +8,21 @@ namespace MarsProjectMVP.StepDefinitions
 {
     [Binding]
         
-    public class EducationFeatureStepDefinitions: CommonDriver
+    public class EducationFeatureStepDefinitions: Hooks
     {
-        
-        Education educationObj = new Education();
+      
 
-        [Given(@"I Logged Into Mars Portal")]
-        public void GivenILoggedIntoMarsPortal()
+        [Given(@"I Logged Into Mars Portals")]
+        public void GivenILoggedIntoMarsPortals()
         {
            
         }
 
         
-        [When(@"I add new Education Details, '([^']*)', '([^']*)', '([^']*)', '([^']*)', '([^']*)'")]
-        public void WhenIAddNewEducationDetails(string Collegename, string countryName, string Title, string degree, string year)
+        [When(@"I add new Education Details, '([^']*)', '([^']*)', '([^']*)', '([^']*)'")]
+        public void WhenIAddNewEducationDetails(string Collegename, string countryName, string degree, string year)
         {
-            educationObj.AddingNewEducation(driver, Collegename, countryName, Title, degree, year);
+            educationObj.AddingNewEducation(driver, Collegename, countryName, degree, year);
         }
 
 

@@ -8,38 +8,33 @@ using TechTalk.SpecFlow;
 namespace MarsProjectMVP.StepDefinitions
 {
     [Binding]
-    public class LanguageFeatureStepDefinitions : CommonDriver
+    public class LanguageFeatureStepDefinitions : Hooks
     {
-        
-        Language languageObj = new Language();
-
-        [Given(@"I Logged Into Mars Portal Successfully")]
-        public void GivenILoggedIntoMarsPortalSuccessfully()
-        {
-            
-        }
-
        
-        [When(@"Adding Language on my profile")]
-        public void GivenAddingLanguageOnMyProfile()
-        {
-            
-            languageObj.AddNewLanguage("English");
 
+        [Given(@"I Logged Into Mars App")]
+        public void GivenILoggedIntoMarsPortalApp()
+        {
+            // Code for the step definition
         }
 
-        [Then(@"The language  should be added succesfully")]
-        public void ThenTheLanguageShouldBeAddedSuccesfully()
+        [When(@"Adding Language on my profile, '([^']*)', '([^']*)'")]
+        public void WhenAddingLanguageOnMyProfile(string LanguageAdd, string ChooseLanguageLevel)
+        {
+            languageObj.AddNewLanguage(driver, LanguageAdd, ChooseLanguageLevel);
+        }
+
+        [Then(@"The language should be added succesfully")]
+        public void ThenTheLanguageShouldBeAddedSuccessfully()
         {
             string newLanguage = languageObj.GetLanguage(driver);
-
-            Assert.That(newLanguage == "English", "Actual Skills and selected Skills do not match.");
+            Assert.That(newLanguage == "English" || newLanguage == "Spanish", "Actual Language and selected Language do not match.");
         }
-        [When(@"Pre Existing record is entered")]
-        public void WhenPreExistingRecordIsEntered()
+
+        [When(@"Pre Existing record is entered, '([^']*)', '([^']*)'")]
+        public void WhenPreExistingRecordIsEntered(string LanguageAdd, string ChooseLanguageLevel)
         {
-            
-            languageObj.AddNewLanguage("English");
+            languageObj.AddNewLanguage(driver, LanguageAdd, ChooseLanguageLevel);
         }
 
         [Then(@"Should result in a notification")]
@@ -48,7 +43,5 @@ namespace MarsProjectMVP.StepDefinitions
             string DuplicateLanguage = languageObj.WindowPopExistingLanguage(driver);
             Assert.That(DuplicateLanguage == "This language is already exist in your language list.", "English has been added to your languages");
         }
-
-
     }
 }

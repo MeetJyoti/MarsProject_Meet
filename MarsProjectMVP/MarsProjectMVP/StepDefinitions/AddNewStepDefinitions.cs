@@ -11,20 +11,14 @@ namespace MarsProjectMVP.StepDefinitions
 
 
     [Binding]
-    public class AddNewStepDefinitions : CommonDriver
+    public class AddNewStepDefinitions : Hooks
     {
-        
-        CreateNew createNewObj = new CreateNew();
-        
 
-
-        [Given(@"I logged into Mars application")]
-        public void GivenILoggedIntoMarsApplication()
+        [Given(@"I Logged Into Mars Portal")]
+        public void GivenILoggedIntoMarsPortal()
         {
-            
-            
-        }
 
+        }
         [When(@"I add new Skills and Level")]
         public void WhenIAddNewSkillsAndLevel()
         {
@@ -35,12 +29,12 @@ namespace MarsProjectMVP.StepDefinitions
         [Then(@"The record should be added successfully")]
         public void ThenTheRecordShouldBeAddedSuccessfully()
         {
+
             string newSkills = createNewObj.GetSkills(driver);
 
             Assert.That(newSkills == "Python", "Actual Skills and selected Skills do not match.");
-
-
         }
+
 
         [When(@"I add Existing Skills")]
         public void WhenIAddExistingSkills()
@@ -59,20 +53,22 @@ namespace MarsProjectMVP.StepDefinitions
         }
 
 
-        [When(@"I edit the existing skills")]
-        public void WhenIEditTheExistingSkills()
+        [When(@"I edit the existing skills, '([^']*)', '([^']*)'")]
+        public void WhenIEditTheExistingSkills(string AddSkill, string SkillLevel)
         {
-            createNewObj.EditSkills("Java");
-
-
+            createNewObj.EditeSkills(driver, AddSkill, SkillLevel);
         }
+
+
+
+
 
         [Then(@"The record should have edited successfully")]
         public void ThenTheRecordShouldHaveEditedSuccessfully()
         {
             string newEditedSkills = createNewObj.EditedSkills(driver);
 
-            Assert.That(newEditedSkills == "Java", "Actual Skills and selected Skills do not match.");
+            Assert.That(newEditedSkills == "Java" || newEditedSkills == "Speckflow", "Actual Skills and selected Skills do not match.");
         }
 
         [When(@"I delete the existing skill")]

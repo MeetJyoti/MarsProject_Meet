@@ -1,4 +1,6 @@
 ﻿using MarsProjectMVP.Pages;
+using MarsProjectMVP.Utilities;
+using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
@@ -12,20 +14,37 @@ namespace MarsProjectMVP.Utilities
     [Binding]
     public class Hooks : CommonDriver
     {
-        [BeforeScenario]
-        public void BeforeScenarioWithTag()
-        {
-            driver = new ChromeDriver();
-            LoginPage LoginPageObj = new LoginPage();
-           // LoginPageObj.LoginActions(driver);
-           LoginPageObj.Login("shahmeetnz@gmail.com", "123456");
+        public readonly Language languageObj;
+        public readonly CreateNew createNewObj;
+        public readonly Education educationObj;
 
-        }  
+        public Hooks()
+        {
+            createNewObj = new CreateNew();
+            languageObj = new Language();
+            educationObj = new Education();
+
+        }
+
+        [BeforeScenario]
+        public void BeforeScenario()
+        {
+            if (driver == null)
+            {
+                driver = new ChromeDriver();
+                LoginPage LoginPageObj = new LoginPage();
+                // LoginPageObj.LoginActions(driver);
+                LoginPageObj.Login("shahmeetnz@gmail.com", "123456");
+            }
+        }
+
 
         [AfterScenario]
         public void AfterScenario()
         {
             driver.Quit();
         }
+
+
     }
 }

@@ -1,6 +1,7 @@
 ﻿using MarsProjectMVP.Utilities;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,7 +19,7 @@ namespace MarsProjectMVP.Pages
         public IWebElement addNewSkillsButton => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[2]"));
         public IWebElement addNewSkillsHeader => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/thead/tr/th[3]/div"));
         public IWebElement skillsInput => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/div/div[1]/input"));
-        public IWebElement skillsLevelDropdown => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/div/div[2]/select"));
+        public IWebElement skillsLevelDropdown => driver.FindElement(By.Name("level"));
         public IWebElement beginnerOption => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/div/div[2]/select/option[2]"));
         public IWebElement addButton => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/div/span/input[1]"));
 
@@ -62,12 +63,12 @@ namespace MarsProjectMVP.Pages
         public string WindowPopDuplicateSkill(IWebDriver driver)
         {
             Thread.Sleep(1000);
-            IWebElement DuplicateAlert = driver.FindElement(By.CssSelector("body > div.ns-box.ns-growl.ns-effect-jelly.ns-type-error.ns-hide > div"));
+            IWebElement DuplicateAlert = driver.FindElement(By.CssSelector("body > div.ns-box.ns-growl.ns-effect-jelly.ns-type-error.ns-show > div"));
             return DuplicateAlert.Text;
 
         }
 
-        public void EditSkills(string skills)
+        public void EditeSkills(IWebDriver driver, string AddSkill, string SkillLevel)
         {
             Thread.Sleep(2000);
             Wait.WaitToBeClicakble(driver, "XPath", "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[2]", 5);
@@ -81,7 +82,14 @@ namespace MarsProjectMVP.Pages
             IWebElement textChange = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td/div/div[1]/input"));
             textChange.Click();
             textChange.Clear();
-            textChange.SendKeys(skills);
+            textChange.SendKeys(AddSkill);
+
+            Wait.WaitToBeClicakble(driver, "XPath", "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/div/div[2]/select", 5);
+            skillsLevelDropdown.Click();
+            Thread.Sleep(2000);
+            SelectElement instituteCountry = new SelectElement(skillsLevelDropdown);
+            Thread.Sleep(2000);
+            instituteCountry.SelectByValue(SkillLevel);
 
             Wait.WaitToBeClicakble(driver, "XPath", "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td/div/span/input[1]", 5);
             IWebElement update = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td/div/span/input[1]"));
@@ -118,8 +126,6 @@ namespace MarsProjectMVP.Pages
 
         }
 
-       
-
-
+        
     }
 }

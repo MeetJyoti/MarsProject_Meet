@@ -1,5 +1,6 @@
 ﻿using MarsProjectMVP.Utilities;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,12 +14,12 @@ namespace MarsProjectMVP.Pages
     {
         public IWebElement AddnewButton => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/thead/tr/th[3]/div"));
         public IWebElement AddnewLanguage => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[1]/input"));
-        public IWebElement LanguageLevel => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[2]/select"));
+        public IWebElement LanguageLevel => driver.FindElement(By.Name("level"));
         public IWebElement Fluent => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[2]/select/option[4]"));
         public IWebElement AddLanguage => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[3]/input[1]"));
 
 
-        public void AddNewLanguage(string language)
+        public void AddNewLanguage(IWebDriver driver, string LanguageAdd, string ChooseLanguageLevel)
         {
             Thread.Sleep(2000);
             Wait.WaitToBeClicakble(driver, "XPath", "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[1]", 5);
@@ -28,11 +29,13 @@ namespace MarsProjectMVP.Pages
 
             Wait.WaitToBeClicakble(driver, "XPath", "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[1]/input", 5);
             AddnewLanguage.Click();
-            AddnewLanguage.SendKeys(language);
+            AddnewLanguage.SendKeys(LanguageAdd);
 
             LanguageLevel.Click();
             Wait.WaitToBeClicakble(driver, "XPath", "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[2]/select/option[4]", 5);
-            Fluent.Click();
+            SelectElement CLL = new SelectElement(LanguageLevel);
+            Thread.Sleep(2000);
+            CLL.SelectByValue(ChooseLanguageLevel);
 
             AddLanguage.Click();
 
@@ -44,9 +47,9 @@ namespace MarsProjectMVP.Pages
             Wait.WaitToBeClicakble(driver, "XPath", "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td[1]", 5);
             IWebElement actualLanguage = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td[1]"));
             return actualLanguage.Text;
-        }
+        }//*[@id="account-profile-section"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td[1]
 
-       
+
 
 
         public string WindowPopExistingLanguage(IWebDriver driver)
